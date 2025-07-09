@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 /*---> Component <---*/
-export const AboutTripo = () => {
+function AboutTripo() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -44,10 +44,6 @@ export const AboutTripo = () => {
   )
 }
 
-const TextWrapper = styled.div`
-  /* border: 1px solid red; */
-`
-
 /*---> Styles <---*/
 const MainWrapper = styled.div`
   background: #f6f4f0;
@@ -59,6 +55,10 @@ const MainWrapper = styled.div`
   @media (max-width: 768px) {
     padding: 0px 15px;
   }
+`
+
+const TextWrapper = styled.div`
+  /* border: 1px solid red; */
 `
 
 const Title = styled.div`
@@ -153,3 +153,5 @@ const AnimatedToy = styled(motion.img)`
     height: 176px;
   }
 `
+
+export default AboutTripo

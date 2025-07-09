@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 /*---> Component <---*/
-export const MainContent = () => {
+function MainContent() {
   const backgroundRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -135,3 +135,5 @@ const GooglePlayStore = styled.img`
     height: 35px;
   }
 `
+
+export default MainContent

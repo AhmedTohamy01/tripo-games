@@ -11,12 +11,7 @@ type PropsType = {
 }
 
 /*---> Component <---*/
-export const GameCard = ({
-  imageUrl,
-  name,
-  category,
-  description,
-}: PropsType) => {
+function GameCard({ imageUrl, name, category, description }: PropsType) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -114,3 +109,5 @@ const GooglePlayIcon = styled.img`
   /* border: 1px solid red; */
   cursor: pointer;
 `
+
+export default GameCard

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { HomeCompound } from '@/compounds/HomeCompound'
+import HomeCompound from '@/compounds/HomeCompound'
 
 export default function Home() {
   return (

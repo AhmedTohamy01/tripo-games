@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { GameCard } from '../GameCard/GameCard'
+import GameCard from '../GameCard/GameCard'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 /*---> Component <---*/
-export const OurGames = () => {
+function OurGames() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -147,3 +147,5 @@ const OurGamesIcon = styled(motion.img)`
   width: 275px;
   height: 300px;
 `
+
+export default OurGames

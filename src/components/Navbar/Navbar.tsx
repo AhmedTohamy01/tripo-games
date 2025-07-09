@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 /*---> Component <---*/
-export const Navbar = () => {
+function Navbar() {
   const [scrollY, setScrollY] = useState(0)
   const ref = useRef(null)
 
@@ -135,3 +135,5 @@ const ContactLink = styled.div`
     transition: 0.5s;
   }
 `
+
+export default Navbar
