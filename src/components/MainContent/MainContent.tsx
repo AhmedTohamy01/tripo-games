@@ -1,15 +1,49 @@
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 /*---> Component <---*/
 export const MainContent = () => {
+  const backgroundRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+
+      // Image width is 1621px, subtract current viewport width
+      const imageWidth = 1621
+      const screenWidth = window.innerWidth
+      const maxScrollX = Math.max(0, imageWidth - screenWidth)
+
+      // Scroll left, but don't go beyond image edge
+      const offsetX = Math.min(scrollY * 0.5, maxScrollX)
+
+      if (backgroundRef.current) {
+        backgroundRef.current.style.backgroundPosition = `-${offsetX}px center`
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <MainWrapper>
+    <MainWrapper
+      ref={backgroundRef}
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2, ease: 'easeOut' }}
+    >
       <ContentWrapper>
         <Title>Made to Be Played</Title>
         <Subtitle>The Very Best in Mobile Gaming</Subtitle>
         <AppStoesWrapper>
           <AppleStore src={'/images/app-store.png'} alt={'App Store Logo'} />
-          <GooglePlayStore src={'/images/google-play.png'} alt={'Google Play Logo'} />
+          <GooglePlayStore
+            src={'/images/google-play.png'}
+            alt={'Google Play Logo'}
+          />
         </AppStoesWrapper>
       </ContentWrapper>
     </MainWrapper>
@@ -19,14 +53,15 @@ export const MainContent = () => {
 /*---> Styles <---*/
 const MainWrapper = styled.div`
   border: 1px solid transparent;
-  // border: 1px solid red;
-
   background-image: url('/images/main-background.jpg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0 center;
+  background-size: cover;
   height: 800px;
   margin-top: -60px;
-  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
 
   @media (max-width: 1024px) {
     height: 500px;
@@ -38,7 +73,6 @@ const MainWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  /* border: 1px solid yellow; */
   margin: 170px 0px 0px 100px;
 
   @media (max-width: 1024px) {
@@ -51,7 +85,6 @@ const ContentWrapper = styled.div`
 `
 
 const Title = styled.p`
-  /* border: 1px solid red; */
   font-family: 'Suez';
   font-size: 80px;
 
@@ -65,7 +98,6 @@ const Title = styled.p`
 `
 
 const Subtitle = styled.p`
-  /* border: 1px solid red; */
   font-size: 24px;
   margin-bottom: 20px;
 
@@ -78,12 +110,9 @@ const Subtitle = styled.p`
   }
 `
 
-const AppStoesWrapper = styled.div`
-  /* border: 1px solid red; */
-`
+const AppStoesWrapper = styled.div``
 
 const AppleStore = styled.img`
-  /* border: 1px solid red; */
   margin-right: 20px;
   cursor: pointer;
   width: 120px;
@@ -96,7 +125,6 @@ const AppleStore = styled.img`
 `
 
 const GooglePlayStore = styled.img`
-  /* border: 1px solid red; */
   margin-right: 20px;
   cursor: pointer;
   width: 137px;
