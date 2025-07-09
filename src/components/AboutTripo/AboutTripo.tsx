@@ -86,7 +86,7 @@ const Subtitle = styled.div`
   }
 `
 
-const Text = styled.p`
+const Text = styled.div`
   font-size: 18px;
   margin-bottom: 40px;
   max-width: 720px;

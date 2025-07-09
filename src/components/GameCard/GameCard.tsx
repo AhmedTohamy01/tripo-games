@@ -78,17 +78,17 @@ const NameCategoryWrapper = styled.div`
   /* border: 1px solid red; */
 `
 
-const Name = styled.p`
+const Name = styled.div`
   /* border: 1px solid red; */
   font-size: 21px;
   font-weight: 700;
 `
 
-const Category = styled.p`
+const Category = styled.div`
   /* border: 1px solid red; */
 `
 
-const CardBody = styled.p`
+const CardBody = styled.div`
   /* border: 1px solid red; */
   margin-bottom: 30px;
 `

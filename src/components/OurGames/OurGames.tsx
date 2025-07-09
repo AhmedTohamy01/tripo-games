@@ -85,7 +85,7 @@ const TextWrapper = styled(motion.div)`
   /* border: 1px solid red; */
 `
 
-const Title = styled.p`
+const Title = styled.div`
   /* border: 1px solid red; */
   font-family: 'Suez';
   font-size: 50px;
@@ -98,7 +98,7 @@ const Title = styled.p`
   }
 `
 
-const Text = styled.p`
+const Text = styled.div`
   /* border: 1px solid red; */
   font-size: 18px;
   margin-bottom: 40px;

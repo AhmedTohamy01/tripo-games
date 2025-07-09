@@ -84,7 +84,7 @@ const ContentWrapper = styled.div`
   }
 `
 
-const Title = styled.p`
+const Title = styled.div`
   font-family: 'Suez';
   font-size: 80px;
 
@@ -97,7 +97,7 @@ const Title = styled.p`
   }
 `
 
-const Subtitle = styled.p`
+const Subtitle = styled.div`
   font-size: 24px;
   margin-bottom: 20px;
 
