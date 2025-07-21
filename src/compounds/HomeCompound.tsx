@@ -5,6 +5,7 @@ import AboutTripo from '@/components/AboutTripo/AboutTripo'
 import OurGames from '@/components/OurGames/OurGames'
 import JoinTeam from '@/components/JoinTeam/JoinTeam'
 import Newsletter from '@/components/Newsletter/Newsletter'
+import Footer from '@/components/Footer/Footer'
 
 /*---> Component <---*/
 function HomeCompound() {
@@ -16,6 +17,7 @@ function HomeCompound() {
       <OurGames />
       <JoinTeam />
       <Newsletter />
+      <Footer />
     </PageWrapper>
   )
 }
