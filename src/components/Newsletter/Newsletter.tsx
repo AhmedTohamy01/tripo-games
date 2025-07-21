@@ -114,7 +114,6 @@ const MainWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
-  margin-bottom: 500px;
   padding: 0 100px;
 
   display: flex;

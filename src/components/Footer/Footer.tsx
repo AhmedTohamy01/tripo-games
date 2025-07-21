@@ -1,60 +1,149 @@
-import React from 'react';
+import Link from 'next/link'
+import React from 'react'
+import styled from 'styled-components'
 
 const Footer = () => {
   return (
-    <footer style={{ borderTop: '1px solid #e0e0e0', marginTop: '3rem', padding: '3rem 0 1.5rem 0', fontFamily: 'Inter, sans-serif', background: '#fff' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', padding: '0 2rem' }}>
+    <FooterWrapper>
+      <FooterContainer>
         {/* Contact */}
-        <div style={{ minWidth: 200, marginBottom: 32 }}>
-          <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 16 }}>Contact</h3>
-          <div style={{ color: '#555', fontSize: 15, lineHeight: '1.8' }}>
-            <div>Info@mysite.com</div>
-            <div>Tel: 123-456-7890</div>
-            <div>500 Terry Francine St</div>
-            <div>San Francisco, CA 94158</div>
-          </div>
-        </div>
+        <FooterColumn>
+          <FooterTitle>Contact</FooterTitle>
+          <FooterTextGroup>
+            <FooterText>Info@mysite.com</FooterText>
+            <FooterText>Tel: 123-456-7890</FooterText>
+            <FooterText>500 Terry Francine St</FooterText>
+            <FooterText>San Francisco, CA 94158</FooterText>
+          </FooterTextGroup>
+        </FooterColumn>
         {/* Navigation */}
-        <div style={{ minWidth: 200, marginBottom: 32 }}>
-          <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 16 }}>Navigation</h3>
-          <div style={{ color: '#555', fontSize: 15, lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <span>Games</span>
-            <span>Careers</span>
-            <span>About</span>
-            <span>Contact</span>
-            <span>Accessibility</span>
-            <span>Terms & Conditions</span>
-            <span>Privacy Policy</span>
-            <span>Shipping Policy</span>
-            <span>Refund Policy</span>
-          </div>
-        </div>
+        <FooterColumn>
+          <FooterTitle>Navigation</FooterTitle>
+          <FooterNavGroup>
+            <Link href='/games' passHref legacyBehavior>
+              <FooterText as='a'>Games</FooterText>
+            </Link>
+            <Link href='/careers' passHref legacyBehavior>
+              <FooterText as='a'>Careers</FooterText>
+            </Link>
+            <Link href='/about' passHref legacyBehavior>
+              <FooterText as='a'>About</FooterText>
+            </Link>
+            <Link href='/contact' passHref legacyBehavior>
+              <FooterText as='a'>Contact</FooterText>
+            </Link>
+          </FooterNavGroup>
+        </FooterColumn>
         {/* Social */}
-        <div style={{ minWidth: 200, marginBottom: 32 }}>
-          <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 16 }}>Social</h3>
-          <div style={{ color: '#555', fontSize: 15, lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <span>Discord</span>
-            <span>Twitch</span>
-            <span>Facebook</span>
-            <span>YouTube</span>
-            <span>Twitter</span>
-            <span>LinkedIn</span>
-          </div>
-        </div>
+        <FooterColumn>
+          <FooterTitle>Social</FooterTitle>
+          <FooterNavGroup>
+            <Link href='https://discord.com/' passHref legacyBehavior>
+              <FooterText as='a' target='_blank' rel='noopener noreferrer'>
+                Discord
+              </FooterText>
+            </Link>
+            <Link href='https://youtube.com/' passHref legacyBehavior>
+              <FooterText as='a' target='_blank' rel='noopener noreferrer'>
+                YouTube
+              </FooterText>
+            </Link>
+            <Link href='https://facebook.com/' passHref legacyBehavior>
+              <FooterText as='a' target='_blank' rel='noopener noreferrer'>
+                Facebook
+              </FooterText>
+            </Link>
+            <Link href='https://x.com/' passHref legacyBehavior>
+              <FooterText as='a' target='_blank' rel='noopener noreferrer'>
+                X
+              </FooterText>
+            </Link>
+          </FooterNavGroup>
+        </FooterColumn>
         {/* Find Us On */}
-        <div style={{ minWidth: 200, marginBottom: 32 }}>
-          <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 16 }}>Find Us On</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <img src="/images/google-play.png" alt="Google Play" style={{ width: 140, height: 'auto' }} />
-            <img src="/images/app-store.png" alt="App Store" style={{ width: 140, height: 'auto' }} />
-          </div>
-        </div>
-      </div>
-      <div style={{ borderTop: '1px solid #e0e0e0', marginTop: 32, paddingTop: 16, textAlign: 'center', color: '#888', fontSize: 14 }}>
-        © 2035 by Tripo. Powered and secured by <a href="https://wix.com" style={{ color: '#888', textDecoration: 'underline' }}>Wix</a>
-      </div>
-    </footer>
-  );
-};
+        <FooterColumn>
+          <FooterTitle>Find Us On</FooterTitle>
+          <StoreBadges>
+            <StoreImg src='/images/google-play.png' alt='Google Play' />
+            <StoreImg src='/images/app-store.png' alt='App Store' />
+          </StoreBadges>
+        </FooterColumn>
+      </FooterContainer>
+      <CopyrightBar>
+        TRIPO GAMES, INC. ©{new Date().getFullYear()} ALL RIGHTS RESERVED
+      </CopyrightBar>
+    </FooterWrapper>
+  )
+}
 
-export default Footer; 
+const FooterWrapper = styled.footer`
+  border-top: 1px solid #e0e0e0;
+  padding: 3rem 0 1.5rem 0;
+  font-family: 'Inter', sans-serif;
+  background: #f6f4f0;
+`
+
+const FooterContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+`
+
+const FooterColumn = styled.div`
+  min-width: 200px;
+  margin-bottom: 32px;
+`
+
+const FooterTitle = styled.h3`
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 16px;
+`
+
+const FooterTextGroup = styled.div`
+  color: #555;
+  font-size: 15px;
+  line-height: 1.8;
+`
+
+const FooterNavGroup = styled.div`
+  color: #555;
+  font-size: 15px;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`
+
+const FooterText = styled.div``
+
+const StoreBadges = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
+
+const StoreImg = styled.img`
+  width: 140px;
+  height: auto;
+  cursor: pointer;
+`
+
+const CopyrightBar = styled.div`
+  border-top: 1px solid #e0e0e0;
+  margin-top: 32px;
+  padding-top: 16px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+`
+
+const CopyrightLink = styled.a`
+  color: #888;
+  text-decoration: underline;
+`
+
+export default Footer
