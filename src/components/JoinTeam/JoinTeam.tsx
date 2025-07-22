@@ -1,16 +1,34 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 /*---> Component <---*/
 function JoinTeam() {
+  const ref = useRef(null)
+  const imageRef = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
   return (
-    <MainWrapper>
+    <MainWrapper
+      ref={ref}
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 2, ease: 'easeOut' }}
+    >
       <TextWrapper>
         <Subtitle>Join Our Team</Subtitle>
         <Title>It takes the world's best talent to change the game.</Title>
         <ExploreButton>Explore Careers</ExploreButton>
       </TextWrapper>
-      <ImageWrapper>
+      <ImageWrapper
+        ref={imageRef}
+        as={motion.div}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 2, ease: 'easeOut' }}
+      >
         <Image
           src='/images/join-team-img.png'
           width={400}
