@@ -13,8 +13,8 @@ function JoinTeam() {
       <ImageWrapper>
         <Image
           src='/images/join-team-img.png'
-          width={488}
-          height={414}
+          width={400}
+          height={340}
           alt='join team image'
         />
       </ImageWrapper>
@@ -35,6 +35,14 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    padding: 0px 50px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0px 15px;
+  }
 `
 
 const Title = styled.div`
