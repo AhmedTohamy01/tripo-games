@@ -13,7 +13,7 @@ function OurGames() {
       <TextWrapper
         ref={ref}
         as={motion.div}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 2, ease: 'easeOut' }}
       >
@@ -24,65 +24,79 @@ function OurGames() {
           more about you.
         </Text>
       </TextWrapper>
-      <FirstRowGames>
-        <GameCard
-          imageUrl={'/images/kipon-icon.png'}
-          name={'Kipon'}
-          category={'Casual - Free'}
-          description={`I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.`}
-        />
-        <GameCard
-          imageUrl={'/images/robotrix-icon.png'}
-          name={'Robotrix'}
-          category={'RPG - Free'}
-          description={`I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.`}
-        />
-      </FirstRowGames>
-      <OurGamesMainImage
-        src={'/images/games-bg.png'}
-        alt={'Our Games Background'}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 3, ease: 'easeOut' }}
-      />
-      <SecondRowGames>
-        <GameCard
-          imageUrl={'/images/treasure-box-icon.png'}
-          name={'Treasure Box'}
-          category={'Adventure - Free'}
-          description={`I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.`}
-        />
-        <OurGamesIconWrapper>
-          <OurGamesIcon
-            src={'/images/games-icon.png'}
-            alt={'Games Icon'}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 2, ease: 'easeOut' }}
+      <ContentWrapper>
+        <FirstRowGames>
+          <GameCard
+            imageUrl={'/images/kipon-icon.png'}
+            name={'Kipon'}
+            category={'Casual - Free'}
+            description={`I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.`}
           />
-        </OurGamesIconWrapper>
-      </SecondRowGames>
+          <GameCard
+            imageUrl={'/images/robotrix-icon.png'}
+            name={'Robotrix'}
+            category={'RPG - Free'}
+            description={`I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.`}
+          />
+        </FirstRowGames>
+        <SecondRowGames>
+          <GameCard
+            imageUrl={'/images/treasure-box-icon.png'}
+            name={'Treasure Box'}
+            category={'Adventure - Free'}
+            description={`I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.`}
+          />
+          <OurGamesIconWrapper>
+            <OurGamesIcon
+              src={'/images/games-icon.png'}
+              alt={'Games Icon'}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 2, ease: 'easeOut' }}
+            />
+          </OurGamesIconWrapper>
+        </SecondRowGames>
+      </ContentWrapper>
     </MainWrapper>
   )
 }
 
 /*---> Styles <---*/
 const MainWrapper = styled.div`
-  /* border: 1px solid red; */
+  /* border: 1px solid blue; */
   background: #f6f4f0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0px 200px 0px;
+  padding: 0px 0px 100px 0px;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 0px 15px;
+    margin-top: -50px;
   }
 `
 
 const TextWrapper = styled(motion.div)`
   /* border: 1px solid red; */
+  margin-bottom: 100px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 50px;
+  }
+`
+
+const ContentWrapper = styled(motion.div)`
+  /* border: 1px solid blue; */
+  background-image: url('/images/games-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: fit-content;
+  min-height: 1300px;
+  max-width: 1800px;
 `
 
 const Title = styled.div`
@@ -111,26 +125,35 @@ const Text = styled.div`
 `
 
 const FirstRowGames = styled.div`
-  /* border: 1px solid yellow; */
-  width: 1200px;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
-  margin-bottom: -400px;
   z-index: 100;
+  padding: 0px 160px;
+  margin-bottom: 450px;
+
+  @media (max-width: 1150px) {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const SecondRowGames = styled.div`
   /* border: 1px solid yellow; */
-  width: 1200px;
   display: flex;
   justify-content: space-between;
-  margin-top: -400px;
   z-index: 100;
-`
+  padding: 0px 160px;
 
-const OurGamesMainImage = styled(motion.img)`
-  /* border: 1px solid red; */
-  z-index: 1;
+  @media (max-width: 1150px) {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const OurGamesIconWrapper = styled.div`

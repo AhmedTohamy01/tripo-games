@@ -20,7 +20,7 @@ function GameCard({ imageUrl, name, category, description }: PropsType) {
       ref={ref}
       as={motion.div}
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 2, ease: 'easeOut' }}
     >
       <CardHeader>
@@ -45,11 +45,15 @@ function GameCard({ imageUrl, name, category, description }: PropsType) {
 /*---> Styles <---*/
 const MainWrapper = styled(motion.div)`
   /* border: 1px solid red; */
-  height: 390px;
   width: 390px;
   border-radius: 20px;
   background: white;
   padding: 50px;
+
+  @media (max-width: 480px) {
+    width: fit-content;
+    padding: 20px;
+  }
 `
 
 const CardHeader = styled.div`
@@ -98,6 +102,7 @@ const CardFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 `
 
 const AppStoreIcon = styled.img`

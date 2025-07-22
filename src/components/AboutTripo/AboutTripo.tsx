@@ -46,6 +46,7 @@ function AboutTripo() {
 
 /*---> Styles <---*/
 const MainWrapper = styled.div`
+  /* border: 1px solid red; */
   background: #f6f4f0;
   display: flex;
   flex-direction: column;
@@ -57,9 +58,7 @@ const MainWrapper = styled.div`
   }
 `
 
-const TextWrapper = styled.div`
-  /* border: 1px solid red; */
-`
+const TextWrapper = styled.div``
 
 const Title = styled.div`
   /* border: 1px solid red; */
