@@ -271,6 +271,7 @@ const MainWrapper = styled.div<{ scrollY: number }>`
   transform: ${({ scrollY }) =>
     scrollY > 100 ? 'translateY(-20px)' : 'translateY(0)'};
   transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
 
   @media (max-width: 1024px) {
     padding: 0px 40px;
@@ -278,6 +279,9 @@ const MainWrapper = styled.div<{ scrollY: number }>`
 
   @media (max-width: 768px) {
     padding: 0px 20px;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 `
 
