@@ -70,7 +70,7 @@ const Footer = () => {
         </FooterColumn>
       </FooterContainer>
       <CopyrightBar>
-        TRIPO GAMES, INC. ©{new Date().getFullYear()} ALL RIGHTS RESERVED
+        TRIPO GAMES, INC. © {new Date().getFullYear()} ALL RIGHTS RESERVED
       </CopyrightBar>
     </FooterWrapper>
   )

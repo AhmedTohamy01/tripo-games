@@ -3,8 +3,9 @@ import { isEmailValid } from '@/utils/helpers'
 import { Button, Form, Input, notification } from 'antd'
 
 /*---> Component <---*/
-function Newsletter() {
+function GetInTouch() {
   const [contactForm] = Form.useForm()
+  const [emailForm] = Form.useForm()
   const [api, contextHolder] = notification.useNotification()
 
   async function handleSuccessfulSave(values: any): Promise<void> {
@@ -101,6 +102,28 @@ function Newsletter() {
           </ButtonWrapper>
         </Form>
       </FormWrapper>
+      <EmailFormWrapper>
+        <EmailFormTitle>Subscribe to Our Newsletter</EmailFormTitle>
+        <Form
+          form={emailForm}
+          id={'emailForm'}
+          onFinish={handleSuccessfulSave}
+          onFinishFailed={handleFailedSave}
+          autoComplete='off'
+        >
+          <SingleFieldWrapper>
+            <EmailLabel>Email *</EmailLabel>
+            <InputWrapper>
+              <Form.Item name='email' rules={[{ required: true, message: '' }]}>
+                <StyledInput allowClear />
+              </Form.Item>
+            </InputWrapper>
+          </SingleFieldWrapper>
+          <JoinButton type='primary' htmlType='submit'>
+            Join
+          </JoinButton>
+        </Form>
+      </EmailFormWrapper>
     </MainWrapper>
   )
 }
@@ -117,7 +140,7 @@ const MainWrapper = styled.div`
   padding: 0 100px;
 
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-between;
   z-index: 0;
 
@@ -136,6 +159,19 @@ const MainWrapper = styled.div`
     position: relative;
     z-index: 2;
   }
+
+  @media (max-width: 1100px) {
+    padding: 100px 50px;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 100px 15px;
+  }
 `
 
 const FormWrapper = styled.div`
@@ -145,6 +181,35 @@ const FormWrapper = styled.div`
   padding: 20px;
   border-radius: 20px;
   margin-top: -200px;
+  height: fit-content;
+
+  @media (max-width: 1100px) {
+    margin-top: 0px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+`
+
+const EmailFormWrapper = styled.div`
+  /* border: 1px solid yellow; */
+  width: 390px;
+  height: 260px;
+  background-color: #da392b;
+  color: white;
+  padding: 24px;
+  border-radius: 20px;
+  margin-top: 160px;
+
+  @media (max-width: 1100px) {
+    margin-top: 0px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    height: auto;
+  }
 `
 
 const FormTitle = styled.div`
@@ -153,6 +218,17 @@ const FormTitle = styled.div`
   font-weight: 700;
   color: #272443;
   margin-bottom: 20px;
+`
+
+const EmailFormTitle = styled.div`
+  /* border: 1px solid red; */
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+
+  @media (max-width: 480px) {
+    font-size: 21px;
+  }
 `
 
 const FormSubTitle = styled.div`
@@ -198,6 +274,14 @@ const Label = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: #101010;
+  margin-bottom: 5px;
+`
+
+const EmailLabel = styled.div`
+  /* border: 1px solid yellow; */
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
   margin-bottom: 5px;
 `
 
@@ -253,4 +337,29 @@ const SubmitButton = styled(Button)`
   }
 `
 
-export default Newsletter
+const JoinButton = styled(Button)`
+  border-radius: 10px !important;
+  background-color: #fcff72 !important;
+  color: #272443 !important;
+  border: 1px solid #fcff72 !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  height: 44px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+
+  &:hover,
+  &:focus {
+    background: #f6f4f0 !important;
+    border: 1px solid #f6f4f0 !important;
+    color: #272443 !important;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+`
+
+export default GetInTouch

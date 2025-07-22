@@ -4,7 +4,7 @@ import MainContent from '@/components/MainContent/MainContent'
 import AboutTripo from '@/components/AboutTripo/AboutTripo'
 import OurGames from '@/components/OurGames/OurGames'
 import JoinTeam from '@/components/JoinTeam/JoinTeam'
-import Newsletter from '@/components/Newsletter/Newsletter'
+import GetInTouch from '@/components/GetInTouch/GetInTouch'
 import Footer from '@/components/Footer/Footer'
 
 /*---> Component <---*/
@@ -16,7 +16,7 @@ function HomeCompound() {
       <AboutTripo />
       <OurGames />
       <JoinTeam />
-      <Newsletter />
+      <GetInTouch />
       <Footer />
     </PageWrapper>
   )
