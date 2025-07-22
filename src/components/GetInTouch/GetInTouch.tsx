@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import { isEmailValid } from '@/utils/helpers'
 import { Button, Form, Input, notification } from 'antd'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 /*---> Component <---*/
 function GetInTouch() {
+  const ref = useRef(null)
+  const emailFormRef = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [contactForm] = Form.useForm()
   const [emailForm] = Form.useForm()
   const [api, contextHolder] = notification.useNotification()
@@ -25,7 +30,13 @@ function GetInTouch() {
   return (
     <MainWrapper>
       {contextHolder}
-      <FormWrapper>
+      <FormWrapper
+        ref={ref}
+        as={motion.div}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 2, ease: 'easeOut' }}
+      >
         <FormTitle>Get in Touch</FormTitle>
         <FormSubTitle>
           I'm a paragraph. Click here to add your own text and edit me.
@@ -102,7 +113,13 @@ function GetInTouch() {
           </ButtonWrapper>
         </Form>
       </FormWrapper>
-      <EmailFormWrapper>
+      <EmailFormWrapper
+        ref={emailFormRef}
+        as={motion.div}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 2, ease: 'easeOut' }}
+      >
         <EmailFormTitle>Subscribe to Our Newsletter</EmailFormTitle>
         <Form
           form={emailForm}
