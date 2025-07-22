@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { AnimatePresence, motion } from 'framer-motion'
 import { MenuOutlined } from '@ant-design/icons'
+import { CloseOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 import { Button } from 'antd'
 
@@ -67,7 +68,9 @@ function Navbar() {
                 <Link href={'/'} onClick={() => setIsMenuOpen(false)}>
                   <Logo>Tripo Games</Logo>
                 </Link>
-                <CloseButton onClick={toggleMenu}>X</CloseButton>
+                <CloseButton onClick={toggleMenu}>
+                  <CloseOutlined />
+                </CloseButton>
               </MobileMenuHeader>
               <MobileNavLinks>
                 <MobileNavLink onClick={() => setIsMenuOpen(false)}>
@@ -120,7 +123,7 @@ const MobileMenuOverlay = styled.div`
   right: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   z-index: 1000;
   backdrop-filter: blur(4px);
 
@@ -135,7 +138,7 @@ const MobileMenuContent = styled.div`
   right: 0;
   width: 300px;
   height: 100vh;
-  background-color: #282825;
+  background-color: #f5f5f5;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -153,14 +156,19 @@ const MobileMenuHeader = styled.div`
 const CloseButton = styled.button`
   background: none;
   border: none;
-  color: #f5f0e7;
+  color: #222;
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 
+  .anticon-close {
+    font-size: 22px;
+    vertical-align: middle;
+  }
+
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.07);
   }
 `
 
@@ -175,16 +183,16 @@ const MobileNavLinks = styled.div`
 
 const MobileNavLink = styled.div`
   /* border: 1px solid red; */
-  color: #f5f0e7;
+  color: #222;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   padding: 12px 0px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: color 0.3s ease;
 
   &:hover {
-    color: #0075aa;
+    color: #da392b;
   }
 `
 
