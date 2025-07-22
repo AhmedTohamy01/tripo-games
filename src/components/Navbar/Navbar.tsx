@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import { MenuOutlined } from '@ant-design/icons'
+import Link from 'next/link'
+import { Button } from 'antd'
 
 /*---> Component <---*/
 function Navbar() {
   const [scrollY, setScrollY] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const ref = useRef(null)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +20,10 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
     <MainWrapper
@@ -33,9 +42,195 @@ function Navbar() {
         <OtherLink>About</OtherLink>
         <ContactLink>Contact</ContactLink>
       </NavLinksWrapper>
+      <MobileMenuWrapper onClick={toggleMenu}>
+        <StyledMenuIcon />
+      </MobileMenuWrapper>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <MobileMenuOverlay
+            ref={menuRef}
+            as={motion.div}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            onClick={(e: { target: any; currentTarget: any }) => {
+              if (e.target === e.currentTarget) {
+                setIsMenuOpen(false)
+              }
+            }}
+          >
+            <MobileMenuContent>
+              <MobileMenuHeader>
+                <Link href={'/'} onClick={() => setIsMenuOpen(false)}>
+                  <Logo>Tripo Games</Logo>
+                </Link>
+                <CloseButton onClick={toggleMenu}>X</CloseButton>
+              </MobileMenuHeader>
+              <MobileNavLinks>
+                <MobileNavLink onClick={() => setIsMenuOpen(false)}>
+                  Games
+                </MobileNavLink>
+                <MobileNavLink onClick={() => setIsMenuOpen(false)}>
+                  Careers
+                </MobileNavLink>
+                <MobileNavLink onClick={() => setIsMenuOpen(false)}>
+                  About
+                </MobileNavLink>
+                <MobileNavLink onClick={() => setIsMenuOpen(false)}>
+                  Contact
+                </MobileNavLink>
+              </MobileNavLinks>
+            </MobileMenuContent>
+          </MobileMenuOverlay>
+        )}
+      </AnimatePresence>
     </MainWrapper>
   )
 }
+
+const MobileMenuWrapper = styled.div`
+  /* border: 1px solid blue; */
+  background-color: white;
+  display: none;
+  width: fit-content;
+  height: 100%;
+  border-radius: 0px 0px 10px 10px;
+  padding: 0px 20px;
+  cursor: pointer;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`
+
+const StyledMenuIcon = styled(MenuOutlined)`
+  /* border: 1px solid red; */
+  font-size: 30px;
+  color: #da392b;
+`
+
+const MobileMenuOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+
+  @media (min-width: 1151px) {
+    display: none;
+  }
+`
+
+const MobileMenuContent = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #282825;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`
+
+const MobileMenuHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+`
+
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: #f5f0e7;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+`
+
+const MobileNavLinks = styled.div`
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+  margin-top: -20px;
+`
+
+const MobileNavLink = styled.div`
+  /* border: 1px solid red; */
+  color: #f5f0e7;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 12px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0075aa;
+  }
+`
+
+const MobilePhoneSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+`
+
+const MobileLoginButton = styled(Button)`
+  background: linear-gradient(to bottom, #044f71, #0075aa) !important;
+  color: #ffffff !important;
+  border: none;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 28px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus {
+    filter: brightness(0.92);
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+  }
+`
+
+const LogoText = styled.span`
+  font-size: 2.2rem;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, #044f71, #0075aa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+  }
+`
 
 /*---> Styles <---*/
 const MainWrapper = styled.div<{ scrollY: number }>`
