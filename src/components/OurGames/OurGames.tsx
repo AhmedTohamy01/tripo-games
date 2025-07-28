@@ -48,7 +48,7 @@ function OurGames() {
           />
           <OurGamesIconWrapper>
             <OurGamesIcon
-              src={'/images/games-icon.png'}
+              src={'/images/games-icon.avif'}
               alt={'Games Icon'}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -89,7 +89,7 @@ const TextWrapper = styled(motion.div)`
 
 const ContentWrapper = styled(motion.div)`
   /* border: 1px solid blue; */
-  background-image: url('/images/games-bg.png');
+  background-image: url('/images/games-bg.avif');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

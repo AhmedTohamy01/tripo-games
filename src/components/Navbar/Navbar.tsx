@@ -24,14 +24,14 @@ function Navbar() {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = ''
     }
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -119,135 +119,6 @@ const MobileMenuWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-`
-
-const StyledMenuIcon = styled(MenuOutlined)`
-  /* border: 1px solid red; */
-  font-size: 30px;
-  color: #da392b;
-`
-
-const MobileMenuOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: 1000;
-  backdrop-filter: blur(4px);
-
-  @media (min-width: 1151px) {
-    display: none;
-  }
-`
-
-const MobileMenuContent = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background-color: #f5f5f5;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-`
-
-const MobileMenuHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-`
-
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  color: #222;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-
-  .anticon-close {
-    font-size: 22px;
-    vertical-align: middle;
-  }
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.07);
-  }
-`
-
-const MobileNavLinks = styled.div`
-  /* border: 1px solid blue; */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 40px;
-  margin-top: -20px;
-`
-
-const MobileNavLink = styled.div`
-  /* border: 1px solid red; */
-  color: #222;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 12px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #da392b;
-  }
-`
-
-const MobilePhoneSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-`
-
-const MobileLoginButton = styled(Button)`
-  background: linear-gradient(to bottom, #044f71, #0075aa) !important;
-  color: #ffffff !important;
-  border: none;
-  width: 100%;
-  height: 50px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 28px;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-  transition: box-shadow 0.3s ease;
-
-  &:hover,
-  &:focus {
-    filter: brightness(0.92);
-    color: #ffffff !important;
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
-  }
-`
-
-const LogoText = styled.span`
-  font-size: 2.2rem;
-  letter-spacing: 0.05em;
-  font-weight: 400;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to bottom, #044f71, #0075aa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  @media (max-width: 768px) {
-    font-size: 1.7rem;
   }
 `
 
@@ -351,6 +222,91 @@ const ContactLink = styled.div`
     background: #da392b;
     color: white;
     transition: 0.5s;
+  }
+`
+
+const StyledMenuIcon = styled(MenuOutlined)`
+  /* border: 1px solid red; */
+  font-size: 30px;
+  color: #da392b;
+`
+
+const MobileMenuOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+
+  @media (min-width: 1151px) {
+    display: none;
+  }
+`
+
+const MobileMenuContent = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`
+
+const MobileMenuHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+`
+
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: #222;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  .anticon-close {
+    font-size: 22px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.07);
+  }
+`
+
+const MobileNavLinks = styled.div`
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+  margin-top: -20px;
+`
+
+const MobileNavLink = styled.div`
+  /* border: 1px solid red; */
+  color: #222;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 12px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #da392b;
   }
 `
 

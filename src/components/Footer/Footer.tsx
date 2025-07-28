@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
+
+/*---> Component <---*/
 const Footer = () => {
   return (
     <FooterWrapper>
@@ -76,6 +78,8 @@ const Footer = () => {
   )
 }
 
+
+/*---> Styles <---*/
 const FooterWrapper = styled.footer`
   border-top: 1px solid #e0e0e0;
   padding: 3rem 0 1.5rem 0;

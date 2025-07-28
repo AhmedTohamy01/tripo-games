@@ -148,16 +148,14 @@ function GetInTouch() {
 /*---> Styles <---*/
 const MainWrapper = styled.div`
   position: relative;
-  background-image: url('./images/newsletter-background.png');
+  background-image: url('./images/newsletter-background.avif');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
   padding: 0 100px;
-
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
   z-index: 0;
 

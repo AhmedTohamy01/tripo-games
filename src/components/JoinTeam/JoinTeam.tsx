@@ -30,7 +30,7 @@ function JoinTeam() {
         transition={{ duration: 2, ease: 'easeOut' }}
       >
         <Image
-          src='/images/join-team-img.png'
+          src='/images/join-team-img.avif'
           width={400}
           height={340}
           alt='join team image'
@@ -43,7 +43,7 @@ function JoinTeam() {
 /*---> Styles <---*/
 const MainWrapper = styled.div`
   /* border: 1px solid red; */
-  background-image: url('./images/join-team-background.png');
+  background-image: url('./images/join-team-background.avif');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

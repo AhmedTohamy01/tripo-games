@@ -27,14 +27,14 @@ function AboutTripo() {
       </TextWrapper>
       <LearnMoreButton>Learn More</LearnMoreButton>
       <AnimatedImage
-        src={'/images/game-designers.png'}
+        src={'/images/game-designers.avif'}
         alt={'Game Designers'}
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 3, ease: 'easeOut' }}
       />
       <AnimatedToy
-        src={'/images/game-designers-toy.png'}
+        src={'/images/game-designers-toy.avif'}
         alt={'Game Designers Toy'}
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}

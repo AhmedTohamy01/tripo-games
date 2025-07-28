@@ -53,7 +53,7 @@ function MainContent() {
 /*---> Styles <---*/
 const MainWrapper = styled.div`
   border: 1px solid transparent;
-  background-image: url('/images/main-background.jpg');
+  background-image: url('/images/main-background.avif');
   background-repeat: no-repeat;
   background-position: 0 center;
   background-size: cover;
